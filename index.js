@@ -8,7 +8,7 @@ app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
 
-// random change wee random
+// random change wee randomss
 app.get("/ping", (req, res) => {
   res.send("Pong");
 });
