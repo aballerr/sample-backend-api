@@ -1,13 +1,23 @@
-FROM public.ecr.aws/docker/library/node:slim
+FROM public.ecr.aws/bitnami/node:14.20.0
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+RUN npm install -g yarn
 
-RUN npm install
+RUN npm i -g nodemon
 
 COPY . .
 
-EXPOSE 3000
+RUN rm -rf node_modules
 
-CMD [ "node", "index.js" ]
+RUN yarn
+
+EXPOSE 5001
+
+EXPOSE 27017
+
+EXPOSE 17677
+
+EXPOSE 5432
+
+CMD [ "yarn", "start" ]
